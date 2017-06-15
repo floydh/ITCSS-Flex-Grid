@@ -1,0 +1,18 @@
+// BREAKPOINTS //
+@mixin bp-large {
+  @media (min-width: $bp-main-small) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media (min-width: $bp-main-medium) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media (min-width: $bp-main-large) {
+    @content;
+  }
+}

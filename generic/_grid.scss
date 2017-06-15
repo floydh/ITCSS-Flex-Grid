@@ -1,0 +1,66 @@
+// GRID //
+.grid,
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.col {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 0 ($gutter / 2);
+  
+  .grid > &,
+  .row > & {
+    float: none;
+    flex: 0 0 auto;
+  }
+  
+  & > .grid {
+    margin-left: -($gutter / 2);
+    margin-right: -($gutter / 2);
+  }
+
+  &--half {
+    @include bp-medium {
+     width: 50% 
+    }
+  }
+
+  &--third {
+    @include bp-medium {
+      width: 33.33%;
+    }
+  }
+
+  &--fourth {
+    @include bp-medium {
+      width: 25%;
+    }
+  }
+
+  &--fifth {
+    @include bp-medium {
+      width: 20%;
+    }
+  }
+}
+
+.row {
+  &--distributed {
+    display: flex;
+    flex-flow: row wrap;
+
+    .col {
+      @for $i from 1 through $columns {
+        &:nth-last-child($i):first-child,
+        &:nth-last-child($i):first-child ~ & {
+          @include bp-medium {
+            width: (100% / $i);
+          }
+        }
+      }
+    }
+  }
+}
